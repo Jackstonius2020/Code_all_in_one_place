@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+
+<!-- 
+  AI Assistance: This code was developed with the help of Claude AI (Anthropic).
+  Prompt used: "Help me build a cybersecurity awareness website for a university 
+  web development assignment based on the KnowYourCyber client brief."
+  Source: Claude AI by Anthropic (claude.ai)
+-->
+
+<html lang="en">
+
+<head>
+  <!-- Character encoding and responsive viewport -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KnowYourCyber - Check Yourself</title>
+
+  <!-- Link to our shared stylesheet -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+
+  <!-- =========================================
+       Navigation Bar
+       ========================================= -->
+  <nav>
+    <!-- Logo on the left -->
+    <span class="nav-logo">⚠ KnowYourCyber</span>
+
+    <!-- Navigation links on the right -->
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="threats.html">Threats</a></li>
+      <li><a href="check.html" class="active">Check Yourself</a></li>
+      <li><a href="protect.html">Stay Protected</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+  </nav>
+
+  <!-- =========================================
+       Page Header
+       ========================================= -->
+  <header class="page-header">
+    <h1>Check <span>Yourself</span></h1>
+    <p>
+      Find out if your email address or password has appeared
+      in a known data breach. Take action before it is too late.
+    </p>
+  </header>
+
+  <!-- =========================================
+       Main Content
+       ========================================= -->
+  <main class="container">
+
+    <!-- Explanation Section -->
+    <section class="section">
+      <h2>Have You Been Compromised?</h2>
+      <p>
+        Data breaches happen when attackers gain unauthorised access to a
+        company's database and steal user information. Your email address
+        or password may have been exposed without you even knowing.
+      </p>
+      <p>
+        Use the tools below to check if your details have appeared in any
+        known breaches recorded in our database. If they have, we strongly
+        recommend changing your password immediately and enabling
+        two-factor authentication.
+      </p>
+    </section>
+
+    <!-- =========================================
+         Email Checker
+         ========================================= -->
+    <section class="section">
+      <h2>Check Your Email</h2>
+
+      <div class="check-box">
+        <!-- Label and input for email address -->
+        <label for="emailInput">Enter your email address:</label>
+        <input
+          type="email"
+          id="emailInput"
+          placeholder="e.g. yourname@email.com"
+        />
+
+        <!-- Button triggers the email check -->
+        <button class="btn" onclick="checkEmail()">Check Email</button>
+
+        <!-- Result message shown after checking -->
+        <div class="result-message" id="emailResult"></div>
+      </div>
+    </section>
+
+    <!-- =========================================
+         Password Checker
+         ========================================= -->
+    <section class="section">
+      <h2>Check Your Password Strength</h2>
+
+      <div class="check-box">
+        <!-- Label and input for password -->
+        <label for="passwordInput">Enter a password to check:</label>
+        <input
+          type="password"
+          id="passwordInput"
+          placeholder="Enter a password..."
+        />
+
+        <!-- Button triggers the password strength check -->
+        <button class="btn" onclick="checkPassword()">Check Password</button>
+
+        <!-- Result message shown after checking -->
+        <div class="result-message" id="passwordResult"></div>
+      </div>
+    </section>
+
+    <!-- Safety Notice Section -->
+    <section class="section">
+      <h2>Is This Safe to Use?</h2>
+
+      <!-- Highlighted notice box -->
+      <div class="highlight-box">
+        <p>
+          Yes. This tool runs entirely in your browser. Your email address
+          and password are never sent to any server or stored anywhere.
+          Everything is checked locally on your device. We recommend never
+          entering your real password on any website — use this tool to check
+          the strength of a test password instead.
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =========================================
+       Footer
+       ========================================= -->
+  <footer>
+    <p>&copy; 2024 KnowYourCyber. A charitable organisation committed to public cyber awareness.</p>
+  </footer>
+
+  <!-- =========================================
+       JavaScript
+       Handles the email and password check logic
+       ========================================= -->
+  <script>
+    // List of commonly breached email addresses for demonstration
+    const breachedEmails = [
+      'test@example.com',
+      'user@hotmail.com',
+      'admin@company.com',
+      'john.doe@gmail.com',
+      'info@business.com',
+      'support@service.com'
+    ];
+
+    // List of very common weak passwords that should never be used
+    const weakPasswords = [
+      'password',
+      '123456',
+      '123456789',
+      'qwerty',
+      'abc123',
+      'password1',
+      'iloveyou',
+      'admin',
+      'letmein',
+      'welcome'
+    ];
+
+    // Function to check if the entered email is in the breached list
+    function checkEmail() {
+      // Get the email value and convert to lowercase
+      const email = document.getElementById('emailInput').value.trim().toLowerCase();
+      const resultBox = document.getElementById('emailResult');
+
+      // If the email field is empty, ask the user to enter one
+      if (email === '') {
+        resultBox.className = 'result-message result-danger';
+        resultBox.style.display = 'block';
+        resultBox.textContent = 'Please enter an email address to check.';
+        return;
+      }
+
+      // Check if the email appears in our breached emails list
+      if (breachedEmails.includes(email)) {
+        // Email was found in a breach
+        resultBox.className = 'result-message result-danger';
+        resultBox.style.display = 'block';
+        resultBox.textContent =
+          'Warning! This email address has appeared in a known data breach. ' +
+          'We recommend changing your password immediately and enabling two-factor authentication.';
+      } else {
+        // Email was not found in any breach
+        resultBox.className = 'result-message result-safe';
+        resultBox.style.display = 'block';
+        resultBox.textContent =
+          'Good news! This email address was not found in our database of known breaches. ' +
+          'Stay vigilant and keep your passwords strong.';
+      }
+    }
+
+    // Function to check the strength of the entered password
+    function checkPassword() {
+      // Get the password value
+      const password = document.getElementById('passwordInput').value;
+      const resultBox = document.getElementById('passwordResult');
+
+      // If the password field is empty, ask the user to enter one
+      if (password === '') {
+        resultBox.className = 'result-message result-danger';
+        resultBox.style.display = 'block';
+        resultBox.textContent = 'Please enter a password to check.';
+        return;
+      }
+
+      // Check if the password is in the weak passwords list
+      if (weakPasswords.includes(password.toLowerCase())) {
+        // Password is dangerously common
+        resultBox.className = 'result-message result-danger';
+        resultBox.style.display = 'block';
+        resultBox.textContent =
+          'Dangerous! This is one of the most commonly used passwords. ' +
+          'It would be cracked almost instantly. Please choose a stronger password.';
+        return;
+      }
+
+      // Check password strength based on length and character variety
+      const hasUppercase = /[A-Z]/.test(password);
+      const hasLowercase = /[a-z]/.test(password);
+      const hasNumbers  = /[0-9]/.test(password);
+      const hasSymbols  = /[^A-Za-z0-9]/.test(password);
+      const isLongEnough = password.length >= 12;
+
+      // Count how many strength criteria are met
+      const strengthScore =
+        (hasUppercase ? 1 : 0) +
+        (hasLowercase ? 1 : 0) +
+        (hasNumbers   ? 1 : 0) +
+        (hasSymbols   ? 1 : 0) +
+        (isLongEnough ? 1 : 0);
+
+      // Give feedback based on the strength score
+      if (strengthScore <= 2) {
+        // Weak password
+        resultBox.className = 'result-message result-danger';
+        resultBox.style.display = 'block';
+        resultBox.textContent =
+          'Weak password. Add uppercase letters, numbers, symbols, ' +
+          'and make it at least 12 characters long.';
+      } else if (strengthScore <= 3) {
+        // Moderate password
+        resultBox.className = 'result-message result-danger';
+        resultBox.style.display = 'block';
+        resultBox.textContent =
+          'Moderate password. It could be stronger. Try adding more ' +
+          'symbols and making it longer.';
+      } else {
+        // Strong password
+        resultBox.className = 'result-message result-safe';
+        resultBox.style.display = 'block';
+        resultBox.textContent =
+          'Strong password! This meets most good password requirements. ' +
+          'Make sure you are using a unique password for every account.';
+      }
+    }
+  </script>
+
+  <!-- Link to global JavaScript file -->
+  <script src="js/main.js"></script>
+
+</body>
+</html>

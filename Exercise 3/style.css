@@ -1,0 +1,245 @@
+/* ============================================================
+   style.css — J's Gallery
+   A photography gallery with an animated gradient background
+   ============================================================ */
+
+/* ----------------------
+   GOOGLE FONTS IMPORT
+   ---------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lora:ital,wght@0,400;1,400&display=swap');
+
+/* ----------------------
+   CSS VARIABLES
+   ---------------------- */
+:root {
+  --bg-dark:    #1a1a2e;
+  --bg-mid:     #16213e;
+  --accent:     #c9a84c;
+  --text-light: #f0ece2;
+  --text-muted: #b0a898;
+  --nav-link:   #7ec8e3;
+  --white:      #ffffff;
+}
+
+/* ----------------------
+   RESET & BASE
+   ---------------------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Lora', Georgia, serif;
+  color: var(--text-light);
+  /* Animated gradient background */
+  background: linear-gradient(
+    135deg,
+    #1a1a2e,
+    #16213e,
+    #0f3460,
+    #1a1a2e,
+    #2c1654
+  );
+  background-size: 400% 400%;
+  animation: gradientShift 12s ease infinite;
+  min-height: 100vh;
+}
+
+/* Animated background keyframes */
+@keyframes gradientShift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Subtle overlay for extra depth */
+.bg-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.15);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Keep all content above the overlay */
+header, main, footer {
+  position: relative;
+  z-index: 1;
+}
+
+/* ----------------------
+   HEADER & NAVIGATION
+   ---------------------- */
+header {
+  text-align: center;
+  padding: 30px 20px 15px;
+  animation: fadeDown 1s ease both;
+}
+
+/* Page title */
+header h1 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 3.2rem;
+  color: var(--white);
+  letter-spacing: 2px;
+  text-shadow: 0 2px 12px rgba(201, 168, 76, 0.4);
+  margin-bottom: 16px;
+}
+
+/* Navigation bar */
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(201, 168, 76, 0.25);
+}
+
+/* Navigation links */
+nav a {
+  font-family: 'Lora', serif;
+  color: var(--nav-link);
+  text-decoration: underline;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: var(--accent);
+}
+
+/* ----------------------
+   MAIN CONTENT
+   ---------------------- */
+main {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 0 10px;
+}
+
+/* ----------------------
+   INTRO SECTION
+   Text with floated cow
+   ---------------------- */
+.intro {
+  padding: 20px 0 10px;
+  /* clearfix so section wraps the float */
+  overflow: hidden;
+  animation: fadeIn 1.2s ease both;
+  animation-delay: 0.3s;
+}
+
+/* Cow image — floated right as required by criteria */
+.cow-img {
+  float: right;
+  margin: 0 0 12px 20px;
+  width: 350px;
+  height: 280px;
+  object-fit: cover;
+  border: 3px solid rgba(201, 168, 76, 0.3);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+/* Intro paragraphs */
+.intro p {
+  font-size: 0.95rem;
+  line-height: 1.75;
+  color: var(--text-light);
+  margin-bottom: 14px;
+}
+
+/* ----------------------
+   GALLERY SECTION
+   ---------------------- */
+.gallery {
+  /* Clear float from intro section */
+  clear: both;
+  animation: fadeIn 1.4s ease both;
+  animation-delay: 0.5s;
+}
+
+/* Each row — flexbox with no gaps between items */
+.gallery-row {
+  display: flex;
+  gap: 0;
+  height: 315px;
+}
+
+/* Individual photo wrapper */
+.gallery-item {
+  flex: 1;
+  overflow: hidden;
+}
+
+/* Photos fill their container and crop neatly */
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+/* Subtle zoom on hover */
+.gallery-item img:hover {
+  transform: scale(1.04);
+}
+
+/* Video wrapper — slightly wider than a photo */
+.gallery-video {
+  flex: 1.3;
+  overflow: hidden;
+  position: relative;
+  background: #000;
+}
+
+/* YouTube iframe fills the video wrapper */
+.gallery-video iframe {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border: none;
+}
+
+/* ----------------------
+   FOOTER
+   ---------------------- */
+footer {
+  text-align: center;
+  padding: 20px;
+  margin-top: 10px;
+  border-top: 1px solid rgba(201, 168, 76, 0.2);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+footer a {
+  color: var(--nav-link);
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: var(--accent);
+}
+
+/* ----------------------
+   ANIMATIONS
+   ---------------------- */
+@keyframes fadeDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}

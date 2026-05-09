@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+
+<!-- 
+  AI Assistance: This code was developed with the help of Claude AI (Anthropic).
+  Prompt used: "Help me build a cybersecurity awareness website for a university 
+  web development assignment based on the KnowYourCyber client brief."
+  Source: Claude AI by Anthropic (claude.ai)
+-->
+
+<html lang="en">
+
+<head>
+  <!-- Character encoding and responsive viewport -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KnowYourCyber - Threats Database</title>
+
+  <!-- Link to our shared stylesheet -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+
+  <!-- =========================================
+       Navigation Bar
+       ========================================= -->
+  <nav>
+    <!-- Logo on the left -->
+    <span class="nav-logo">⚠ KnowYourCyber</span>
+
+    <!-- Navigation links on the right -->
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="threats.html" class="active">Threats</a></li>
+      <li><a href="check.html">Check Yourself</a></li>
+      <li><a href="protect.html">Stay Protected</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+  </nav>
+
+  <!-- =========================================
+       Page Header
+       ========================================= -->
+  <header class="page-header">
+    <h1>Cyber <span>Threats</span> Database</h1>
+    <p>
+      Browse our database of documented cyber threats.
+      Search by name or filter by category to find what you are looking for.
+    </p>
+  </header>
+
+  <!-- =========================================
+       Main Content
+       ========================================= -->
+  <main class="container">
+
+    <!-- Search and Filter Bar -->
+    <div class="search-bar">
+
+      <!-- Text input to search threats by name -->
+      <input
+        type="text"
+        id="searchInput"
+        placeholder=" Search threats by name..."
+      />
+
+      <!-- Dropdown to filter threats by category -->
+      <select id="categoryFilter">
+        <option value="all">All Categories</option>
+        <option value="Social Engineering">Social Engineering</option>
+        <option value="Malware">Malware</option>
+        <option value="Web Attack">Web Attack</option>
+        <option value="Network Attack">Network Attack</option>
+        <option value="Credential Attack">Credential Attack</option>
+        <option value="Software Vulnerability">Software Vulnerability</option>
+      </select>
+
+    </div>
+
+    <!-- =========================================
+         Threats Cards Container
+         Cards are injected here by JavaScript
+         ========================================= -->
+    <div class="card-grid" id="threatsContainer">
+      <!-- JavaScript will load threat cards here from threats.json -->
+    </div>
+
+    <!-- Message shown when no threats match the search -->
+    <p id="noResults" style="display:none; color:#666666; text-align:center; margin-top:40px; font-size:0.95rem;">
+      No threats found matching your search.
+    </p>
+
+  </main>
+
+  <!-- =========================================
+       Footer
+       ========================================= -->
+  <footer>
+    <p>&copy; 2024 KnowYourCyber. A charitable organisation committed to public cyber awareness.</p>
+  </footer>
+
+  <!-- =========================================
+       JavaScript
+       Loads threat data from threats.json and
+       handles search and filter functionality
+       ========================================= -->
+  <script>
+    // Store all threats globally so we can filter them later
+    let allThreats = [];
+
+    // Fetch the threats data from our local JSON file
+    fetch('data/threats.json')
+      .then(response => response.json())
+      .then(data => {
+        // Save threats to our global variable
+        allThreats = data.threats;
+        // Display all threats on the page
+        displayThreats(allThreats);
+      })
+      .catch(error => {
+        // Show an error message if the file fails to load
+        console.error('Error loading threats:', error);
+        document.getElementById('threatsContainer').innerHTML =
+          '<p style="color:#ff9999;">Failed to load threats data. Please try again.</p>';
+      });
+
+    // Function to display an array of threats as cards on the page
+    function displayThreats(threats) {
+      const container = document.getElementById('threatsContainer');
+      const noResults = document.getElementById('noResults');
+
+      // If no threats match, show the no results message
+      if (threats.length === 0) {
+        container.innerHTML = '';
+        noResults.style.display = 'block';
+        return;
+      }
+
+      // Hide the no results message
+      noResults.style.display = 'none';
+
+      // Build the HTML for each threat card
+      container.innerHTML = threats.map(threat => `
+        <div class="card">
+          <!-- Severity badge with colour based on level -->
+          <span class="badge badge-${threat.severity.toLowerCase()}">
+            ${threat.severity}
+          </span>
+
+          <!-- Threat name -->
+          <h3>${threat.name}</h3>
+
+          <!-- Category and year -->
+          <p><strong>Category:</strong> ${threat.category}</p>
+          <p><strong>Year Recorded:</strong> ${threat.year}</p>
+
+          <!-- Description -->
+          <p>${threat.description}</p>
+
+          <!-- Who is affected -->
+          <p><strong>Who is affected:</strong> ${threat.affected}</p>
+
+          <!-- Prevention tip -->
+          <p><strong>Prevention:</strong> ${threat.prevention}</p>
+        </div>
+      `).join('');
+    }
+
+    // Function to filter threats based on search input and category dropdown
+    function filterThreats() {
+      // Get the current search text in lowercase
+      const searchText = document.getElementById('searchInput').value.toLowerCase();
+
+      // Get the selected category
+      const selectedCategory = document.getElementById('categoryFilter').value;
+
+      // Filter the threats array
+      const filtered = allThreats.filter(threat => {
+        // Check if the threat name includes the search text
+        const matchesSearch = threat.name.toLowerCase().includes(searchText);
+
+        // Check if the category matches (or if "all" is selected)
+        const matchesCategory =
+          selectedCategory === 'all' || threat.category === selectedCategory;
+
+        // Only include threats that match both conditions
+        return matchesSearch && matchesCategory;
+      });
+
+      // Display the filtered results
+      displayThreats(filtered);
+    }
+
+    // Listen for typing in the search box
+    document.getElementById('searchInput').addEventListener('input', filterThreats);
+
+    // Listen for changes in the category dropdown
+    document.getElementById('categoryFilter').addEventListener('change', filterThreats);
+  </script>
+
+  <!-- Link to global JavaScript file -->
+  <script src="js/main.js"></script>
+
+</body>
+</html>

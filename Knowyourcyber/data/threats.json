@@ -1,0 +1,124 @@
+{
+  "threats": [
+    {
+      "id": 1,
+      "name": "Phishing Attack",
+      "category": "Social Engineering",
+      "severity": "High",
+      "description": "Attackers send fake emails pretending to be trusted organisations to steal login credentials or personal information.",
+      "affected": "Email users, banking customers, corporate employees",
+      "year": 2023,
+      "prevention": "Never click suspicious links. Always verify the sender's email address."
+    },
+    {
+      "id": 2,
+      "name": "Ransomware",
+      "category": "Malware",
+      "severity": "Critical",
+      "description": "Malicious software that encrypts your files and demands payment to restore access.",
+      "affected": "Hospitals, businesses, government agencies, individuals",
+      "year": 2022,
+      "prevention": "Keep regular backups. Never open attachments from unknown senders."
+    },
+    {
+      "id": 3,
+      "name": "SQL Injection",
+      "category": "Web Attack",
+      "severity": "High",
+      "description": "Attackers insert malicious SQL code into web forms to gain unauthorised access to databases.",
+      "affected": "Websites with login forms, e-commerce platforms",
+      "year": 2023,
+      "prevention": "Use parameterised queries. Keep software updated."
+    },
+    {
+      "id": 4,
+      "name": "Man-in-the-Middle Attack",
+      "category": "Network Attack",
+      "severity": "High",
+      "description": "An attacker secretly intercepts and possibly alters communications between two parties.",
+      "affected": "Public Wi-Fi users, online banking customers",
+      "year": 2022,
+      "prevention": "Avoid public Wi-Fi. Always use HTTPS websites. Use a VPN."
+    },
+    {
+      "id": 5,
+      "name": "Brute Force Attack",
+      "category": "Credential Attack",
+      "severity": "Medium",
+      "description": "Attackers try every possible password combination until they find the correct one.",
+      "affected": "Any account protected by a weak password",
+      "year": 2023,
+      "prevention": "Use long, complex passwords. Enable two-factor authentication."
+    },
+    {
+      "id": 6,
+      "name": "Spyware",
+      "category": "Malware",
+      "severity": "Medium",
+      "description": "Software that secretly monitors your activity, collecting passwords, browsing history and personal data.",
+      "affected": "Personal computers, mobile devices",
+      "year": 2022,
+      "prevention": "Install reputable antivirus software. Avoid downloading from untrusted sources."
+    },
+    {
+      "id": 7,
+      "name": "DDoS Attack",
+      "category": "Network Attack",
+      "severity": "Critical",
+      "description": "Attackers flood a server with traffic to make a website or service unavailable to real users.",
+      "affected": "Websites, online services, gaming platforms",
+      "year": 2023,
+      "prevention": "Use DDoS protection services. Monitor traffic for unusual spikes."
+    },
+    {
+      "id": 8,
+      "name": "Keylogger",
+      "category": "Malware",
+      "severity": "High",
+      "description": "Software that secretly records every keystroke you make, capturing passwords and sensitive information.",
+      "affected": "Computer users, corporate networks",
+      "year": 2022,
+      "prevention": "Use antivirus software. Avoid using unknown computers for sensitive tasks."
+    },
+    {
+      "id": 9,
+      "name": "Zero-Day Exploit",
+      "category": "Software Vulnerability",
+      "severity": "Critical",
+      "description": "An attack that targets a previously unknown software vulnerability before developers have had a chance to fix it.",
+      "affected": "Any software users, especially those who delay updates",
+      "year": 2023,
+      "prevention": "Always install software updates immediately. Use vulnerability scanning tools."
+    },
+    {
+      "id": 10,
+      "name": "Identity Theft",
+      "category": "Social Engineering",
+      "severity": "High",
+      "description": "Criminals steal personal information such as name, address and financial details to commit fraud.",
+      "affected": "General public, online shoppers, social media users",
+      "year": 2023,
+      "prevention": "Monitor your accounts regularly. Use strong unique passwords for every account."
+    },
+    {
+      "id": 11,
+      "name": "Adware",
+      "category": "Malware",
+      "severity": "Low",
+      "description": "Unwanted software that displays excessive advertisements and can slow down your device.",
+      "affected": "General computer and mobile users",
+      "year": 2022,
+      "prevention": "Download software only from official sources. Use an ad blocker."
+    },
+    {
+      "id": 12,
+      "name": "Credential Stuffing",
+      "category": "Credential Attack",
+      "severity": "High",
+      "description": "Attackers use lists of stolen usernames and passwords from one breach to try to access other accounts.",
+      "affected": "People who reuse passwords across multiple sites",
+      "year": 2023,
+      "prevention": "Use a unique password for every account. Use a password manager."
+    }
+  ]
+}

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+
+<!-- 
+  AI Assistance: This code was developed with the help of Claude AI (Anthropic).
+  Prompt used: "Help me build a cybersecurity awareness website for a university 
+  web development assignment based on the KnowYourCyber client brief."
+  Source: Claude AI by Anthropic (claude.ai)
+-->
+
+<html lang="en">
+
+<head>
+  <!-- Character encoding and responsive viewport -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KnowYourCyber - Home</title>
+
+  <!-- Link to our shared stylesheet -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+
+  <!-- =========================================
+       Navigation Bar
+       ========================================= -->
+  <nav>
+    <!-- Logo on the left -->
+    <span class="nav-logo">⚠ KnowYourCyber</span>
+
+    <!-- Navigation links on the right -->
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="threats.html">Threats</a></li>
+      <li><a href="check.html">Check Yourself</a></li>
+      <li><a href="protect.html">Stay Protected</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+  </nav>
+
+  <!-- =========================================
+       Hero / Page Header
+       ========================================= -->
+  <header class="page-header">
+    <h1>Stay One Step Ahead of <span>Cyber Threats</span></h1>
+    <p>
+      A free public database helping everyday people understand
+      cyber threats, data breaches, and how to stay safe online.
+      Knowledge is your best defence.
+    </p>
+    <!-- Buttons linking to key pages -->
+    <a href="threats.html" class="btn">Browse Threats Database</a>
+    <a href="check.html" class="btn" style="margin-left:12px; background:transparent; border:1px solid #444; box-shadow:none;">Check Your Details</a>
+  </header>
+
+  <!-- =========================================
+       Main Content
+       ========================================= -->
+  <main class="container">
+
+    <!-- About Section -->
+    <section class="section">
+      <h2>What is KnowYourCyber?</h2>
+      <p>
+        KnowYourCyber is a charitable organisation dedicated to increasing
+        public awareness of cyber threats. We believe that everyone deserves
+        to understand the risks they face online, regardless of their
+        technical background.
+      </p>
+      <p>
+        Over the years we have compiled a database of the most common and
+        dangerous cyber threats. Our goal is to present this information in
+        a clear, accessible way so that anyone can learn from it and protect
+        themselves.
+      </p>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="section">
+      <h2>Cyber Threats by the Numbers</h2>
+      <p>The scale of cybercrime continues to grow every year. Here are some key statistics:</p>
+
+      <!-- Row of statistic boxes -->
+      <div class="stats-row">
+
+        <div class="stat-box">
+          <h3>4.1B</h3>
+          <p>Records exposed in data breaches in 2023</p>
+        </div>
+
+        <div class="stat-box">
+          <h3>300K+</h3>
+          <p>New malware samples detected every day</p>
+        </div>
+
+        <div class="stat-box">
+          <h3>£4,200</h3>
+          <p>Average cost of a cyber attack on a small business</p>
+        </div>
+
+        <div class="stat-box">
+          <h3>95%</h3>
+          <p>Of breaches are caused by human error</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Images Section -->
+    <section class="section">
+      <h2>Cyber Threats Are Real</h2>
+      <p>
+        Cyber attacks happen every day, targeting individuals, businesses,
+        and organisations of all sizes. Here is a glimpse into the world
+        of cybersecurity.
+      </p>
+
+      <!-- Row of three cybersecurity images -->
+      <div style="display:flex; gap:15px; margin-top:20px; flex-wrap:wrap;">
+
+        <!-- Image 1 -->
+        <img
+          src="images web/cyber_1.png"
+          alt="Cybersecurity concept image 1"
+          style="flex:1; min-width:200px; max-width:100%; height:220px; object-fit:cover; border-radius:12px; border:1px solid #222222;"
+        />
+
+        <!-- Image 2 -->
+        <img
+          src="images web/cyber_2.png"
+          alt="Cybersecurity concept image 2"
+          style="flex:1; min-width:200px; max-width:100%; height:220px; object-fit:cover; border-radius:12px; border:1px solid #222222;"
+        />
+
+        <!-- Image 3 -->
+        <img
+          src="images web/cyber_3.png"
+          alt="Cybersecurity concept image 3"
+          style="flex:1; min-width:200px; max-width:100%; height:220px; object-fit:cover; border-radius:12px; border:1px solid #222222;"
+        />
+
+      </div>
+    </section>
+
+    <!-- Why It Matters Section -->
+    <section class="section">
+      <h2>Why Does This Matter?</h2>
+      <p>
+        Cyber attacks do not only target large companies. Individuals,
+        schools, charities, and small businesses are all at risk. A single
+        phishing email or weak password can lead to identity theft, financial
+        loss, or worse.
+      </p>
+      <p>
+        The good news is that most cyber attacks are preventable. With the
+        right knowledge, you can significantly reduce your risk. That is
+        exactly what KnowYourCyber is here to help with.
+      </p>
+      <a href="protect.html" class="btn">Learn How to Stay Safe</a>
+    </section>
+
+    <!-- Quick Links Section -->
+    <section class="section">
+      <h2>Explore the Site</h2>
+
+      <!-- Cards linking to other pages -->
+      <div class="card-grid">
+
+        <div class="card">
+          <h3>🛡 Threats Database</h3>
+          <p>
+            Browse our full database of cyber threats. Search and filter
+            by category or severity level to find what you are looking for.
+          </p>
+          <a href="threats.html" class="btn">View Threats</a>
+        </div>
+
+        <div class="card">
+          <h3>Check Yourself</h3>
+          <p>
+            Find out if your email address or password has appeared in a
+            known data breach and take action before any damage is done.
+          </p>
+          <a href="check.html" class="btn">Check Now</a>
+        </div>
+
+        <div class="card">
+          <h3>Stay Protected</h3>
+          <p>
+            Read our practical tips on how to protect yourself from cyber
+            attacks, and tick off your personal security checklist.
+          </p>
+          <a href="protect.html" class="btn">Get Tips</a>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =========================================
+       Footer
+       ========================================= -->
+  <footer>
+    <p>&copy; 2024 KnowYourCyber. A charitable organisation committed to public cyber awareness.</p>
+  </footer>
+
+  <!-- Link to global JavaScript file -->
+  <script src="js/main.js"></script>
+
+</body>
+</html>

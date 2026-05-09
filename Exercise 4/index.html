@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Wondering Photographer</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <img src="Design.png" alt="" class="design-img" aria-hidden="true" />
+    <div class="header-top">
+      <h1>The Wondering Photographer</h1>
+      <a href="checkout.html" class="cart-btn" aria-label="Go to shopping cart">
+        <img src="Cart.png" alt="Shopping cart" />
+        Basket
+      </a>
+    </div>
+    <p class="subtitle">Fine art prints from around the world — available to purchase</p>
+  </header>
+
+  <!-- Main photo gallery -->
+  <main>
+    <section aria-label="Photo gallery">
+
+      <!-- Ocean View -->
+      <article class="photo-card">
+        <figure>
+          <a href="OceanView.png" class="photo-link" aria-label="View full size: Ocean cliffs at sunset in Greenland">
+            <img src="OceanView.png" alt="Two people sitting on white chalk cliffs overlooking a calm turquoise ocean at sunset in Greenland" />
+          </a>
+          <figcaption>This was from a fabulous trip to the coast of Greenland with my family. The water was lovely — but very cold!</figcaption>
+        </figure>
+        <button type="button" aria-label="Add Greenland ocean view print to basket">Add to Basket</button>
+      </article>
+
+      <!-- Golden Gate Bridge -->
+      <article class="photo-card">
+        <figure>
+          <a href="GoldenGate.png" class="photo-link" aria-label="View full size: Golden Gate Bridge tower from below">
+            <img src="GoldenGate.png" alt="Looking upward at the towering red steel structure of the Golden Gate Bridge against a vivid blue sky" />
+          </a>
+          <figcaption>A picture of the Golden Gate Bridge. New York! New York!</figcaption>
+        </figure>
+        <button type="button" aria-label="Add Golden Gate Bridge print to basket">Add to Basket</button>
+      </article>
+
+      <!-- Valley -->
+      <article class="photo-card">
+        <figure>
+          <a href="Valley.png" class="photo-link" aria-label="View full size: Glacial river valley in Greenland">
+            <img src="Valley.png" alt="A sweeping aerial view of a deep blue fjord cutting through rocky mountain terrain in Greenland" />
+          </a>
+          <figcaption>Another great photo from Greenland. It's a river valley where a glacier used to be.</figcaption>
+        </figure>
+        <button type="button" aria-label="Add Greenland glacier valley print to basket">Add to Basket</button>
+      </article>
+
+      <!-- Waterfall -->
+      <article class="photo-card">
+        <figure>
+          <a href="Waterfall.png" class="photo-link" aria-label="View full size: Waterfall cascading into a mossy pool">
+            <img src="Waterfall.png" alt="A powerful waterfall crashing into a dark pool surrounded by lush green mossy rocks" />
+          </a>
+          <figcaption>The waterfall made such a lovely sound. I could have fallen asleep!</figcaption>
+        </figure>
+        <button type="button" aria-label="Add waterfall print to basket">Add to Basket</button>
+      </article>
+
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <img src="Design.png" alt="" class="design-img" aria-hidden="true" />
+    <p>Copyright The Wondering Photographer 2018.</p>
+    <nav aria-label="Footer navigation">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="about.html">About me</a></li>
+      </ul>
+    </nav>
+  </footer>
+
+  <!-- Lightbox overlay for full-size image viewing -->
+  <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer" hidden>
+    <button id="lightbox-close" aria-label="Close image viewer">&times;</button>
+    <img id="lightbox-img" src="" alt="" />
+  </div>
+
+  <script>
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const closeBtn = document.getElementById('lightbox-close');
+
+    // Open lightbox when a photo is clicked
+    document.querySelectorAll('.photo-link').forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        lightboxImg.src = this.href;
+        lightboxImg.alt = this.querySelector('img').alt;
+        lightbox.hidden = false;
+        closeBtn.focus();
+      });
+    });
+
+    // Close lightbox
+    closeBtn.addEventListener('click', () => { lightbox.hidden = true; });
+    lightbox.addEventListener('click', (e) => { if (e.target === lightbox) lightbox.hidden = true; });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') lightbox.hidden = true; });
+  </script>
+
+</body>
+</html>

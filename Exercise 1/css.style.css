@@ -1,0 +1,51 @@
+    /* Page background and font */
+    body {
+      background-color: #fdf6ec;
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      color: #2c1a0e;
+    }
+
+    /* Header area at the top */
+    header {
+      background-color: #d2691e;
+      padding: 15px;
+      color: white;
+    }
+
+    /* Navigation bar */
+    nav {
+      background-color: #8b4513;
+      padding: 10px;
+    }
+
+    /* Nav links */
+    nav a {
+      color: white;
+      margin-right: 15px;
+      text-decoration: none;
+    }
+
+    /* Main content area */
+    main {
+      background-color: white;
+      padding: 20px;
+      margin-top: 15px;
+      border: 1px solid #ccc;
+    }
+
+    /* Tip box */
+    aside {
+      background-color: #fff3e0;
+      border-left: 4px solid #d2691e;
+      padding: 10px;
+      margin: 15px 0;
+    }
+
+    /* Footer at the bottom */
+    footer {
+      background-color: #d2691e;
+      color: white;
+      padding: 10px;
+      margin-top: 20px;
+    }
